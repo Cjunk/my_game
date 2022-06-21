@@ -45,15 +45,12 @@ const maxParticleExplosionSize = 2;
 //  CLASSES
 class Star {
   constructor(x, y, length, color) {
-    (this.x = x),
-      (this.y = y),
-      (this.length = length),
-      (this.color = `hsl(${Math.random() * 360},50%,50%)`);
+    (this.x = x), (this.y = y), (this.length = length), (this.color = `hsl(${Math.random() * 360},50%,50%)`);
     this.size = length;
   }
   draw() {
-      c.beginPath();
-      c.fillStyle = "rgba(225,225,225,0.5)";
+    c.beginPath();
+    c.fillStyle = "rgba(225,225,225,0.5)";
     c.lineWidth = 1;
     c.strokeStyle = "white";
     c.moveTo(this.x, this.y);
@@ -61,13 +58,13 @@ class Star {
     c.stroke();
     c.moveTo(this.x - this.size, this.y + this.size);
     c.lineTo(this.x + this.size, this.y + this.size);
-      c.stroke();
-     c.moveTo(this.x + this.size/2, this.y+(this.size/2));
-     c.lineTo(this.x - this.size/2, this.y + this.size*1.5);
-     c.stroke();     
-     c.moveTo(this.x - this.size / 2, this.y + this.size / 2);
-     c.lineTo(this.x + this.size / 2, this.y + this.size * 1.5);
-     c.stroke();
+    c.stroke();
+    c.moveTo(this.x + this.size / 2, this.y + this.size / 2);
+    c.lineTo(this.x - this.size / 2, this.y + this.size * 1.5);
+    c.stroke();
+    c.moveTo(this.x - this.size / 2, this.y + this.size / 2);
+    c.lineTo(this.x + this.size / 2, this.y + this.size * 1.5);
+    c.stroke();
   }
 }
 class Player {
@@ -194,17 +191,16 @@ function increaseScore(amount) {
 const newStar = new Star(50, 50, 3, "white");
 // CREATE THE STARS
 function createTheStars(amount) {
- for (let i = 0; i < amount; i++) {
-   stars.push(
-     new Star(
-       Math.random() * innerWidth,
-       Math.random() * innerHeight,
-       Math.random() * Math.random() * MAX_SIZE,
-       "white"
-     )
-   );
- }
-
+  for (let i = 0; i < amount; i++) {
+    stars.push(
+      new Star(
+        Math.random() * innerWidth,
+        Math.random() * innerHeight,
+        Math.random() * Math.random() * MAX_SIZE,
+        "white"
+      )
+    );
+  }
 }
 function animate() {
   animationID = requestAnimationFrame(animate);
@@ -224,19 +220,13 @@ function animate() {
     }
   });
   projectiles.forEach((projectile, projectileIndex) => {
-    if (
-      projectile.x - projectile.radius < 0 ||
-      projectile.x - projectile.radius > canvas.width
-    ) {
+    if (projectile.x - projectile.radius < 0 || projectile.x - projectile.radius > canvas.width) {
       setTimeout(() => {
         projectiles.splice(projectileIndex, 1);
         increaseScore(lossOfProjectile);
       }, 0);
     }
-    if (
-      projectile.y - projectile.radius < 0 ||
-      projectile.y - projectile.radius > canvas.height
-    ) {
+    if (projectile.y - projectile.radius < 0 || projectile.y - projectile.radius > canvas.height) {
       setTimeout(() => {
         increaseScore(lossOfProjectile);
         projectiles.splice(projectileIndex, 1);
@@ -247,14 +237,8 @@ function animate() {
   });
   if (enemies) {
     enemies.forEach((enemy, index) => {
-      constDistFromPlayer = Math.hypot(
-        mainPlayer.x - enemy.x,
-        mainPlayer.y - enemy.y
-      );
-      if (
-        mainPlayer.alive &&
-        constDistFromPlayer - enemy.radius - mainPlayer.radius < 1
-      ) {
+      constDistFromPlayer = Math.hypot(mainPlayer.x - enemy.x, mainPlayer.y - enemy.y);
+      if (mainPlayer.alive && constDistFromPlayer - enemy.radius - mainPlayer.radius < 1) {
         // enemy has hit main player.
         for (let i = 0; i < enemy.radius * explosionAwesomeness; i++) {
           particles.push(
@@ -264,12 +248,8 @@ function animate() {
               mainPlayer.color, // its color
               Math.random() * maxParticleExplosionSize, // radius
               {
-                x:
-                  (Math.random() - 0.5) *
-                  (Math.random() * maxExplosionParticleVelocity), // the velocity on the x axis
-                y:
-                  (Math.random() - 0.5) *
-                  (Math.random() * maxExplosionParticleVelocity),
+                x: (Math.random() - 0.5) * (Math.random() * maxExplosionParticleVelocity), // the velocity on the x axis
+                y: (Math.random() - 0.5) * (Math.random() * maxExplosionParticleVelocity),
               }
             )
           );
@@ -281,16 +261,12 @@ function animate() {
               enemy.color, // its color
               Math.random() * maxParticleExplosionSize, // radius
               {
-                x:
-                  (Math.random() - 0.5) *
-                  (Math.random() * maxExplosionParticleVelocity), // the velocity on the x axis
-                y:
-                  (Math.random() - 0.5) *
-                  (Math.random() * maxExplosionParticleVelocity),
+                x: (Math.random() - 0.5) * (Math.random() * maxExplosionParticleVelocity), // the velocity on the x axis
+                y: (Math.random() - 0.5) * (Math.random() * maxExplosionParticleVelocity),
               }
             )
           );
-           enemies = null;
+          enemies = null;
           setTimeout(() => {
             cancelAnimationFrame(animationID);
           }, 2000);
@@ -310,12 +286,8 @@ function animate() {
                 enemy.color, // its color
                 Math.random() * maxParticleExplosionSize, // radius
                 {
-                  x:
-                    (Math.random() - 0.5) *
-                    (Math.random() * maxExplosionParticleVelocity), // the velocity on the x axis
-                  y:
-                    (Math.random() - 0.5) *
-                    (Math.random() * maxExplosionParticleVelocity),
+                  x: (Math.random() - 0.5) * (Math.random() * maxExplosionParticleVelocity), // the velocity on the x axis
+                  y: (Math.random() - 0.5) * (Math.random() * maxExplosionParticleVelocity),
                 }
               )
             );
@@ -354,10 +326,7 @@ addEventListener("keydown", (event) => {
 });
 addEventListener("click", (event) => {
   if (mainPlayer.alive) {
-    let angle = Math.atan2(
-      event.clientY - mainPlayer.y,
-      event.clientX - mainPlayer.x
-    );
+    let angle = Math.atan2(event.clientY - mainPlayer.y, event.clientX - mainPlayer.x);
     const projectile = new Projectile(mainPlayer.x, mainPlayer.y, "white", {
       x: Math.cos(angle) * projectileSpeed,
       y: Math.sin(angle) * projectileSpeed,
@@ -373,7 +342,6 @@ addEventListener("mousemove", (event) => {
     mainPlayer.y = event.clientY;
   }
 });
-createTheStars(NUMBER_OF_STARS)
+createTheStars(NUMBER_OF_STARS);
 spawnEnemies();
 animate();
-
