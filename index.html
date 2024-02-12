@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"
+      integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script defer src="./index.js"></script>
+    <title>Document</title>
+
+    <style>
+      body {
+        margin: 0;
+      }
+      #scoreboard {
+        position:fixed;
+      }
+      p{
+        color:white;
+        float:left;
+        display:relative;
+        letter-spacing: 5px;
+        margin:5px 5px;
+        user-select: none;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="scoreboard">
+    <p>Score : </p>
+    <p id="theScore">0</p>
+    </div>
+    <canvas id="canvas"></canvas>
+  </body>
+</html>
